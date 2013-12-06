@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Angular calendar</title>
+		<style>
+			.datepicker td { text-align: center; }
+			.datepicker .day { cursor: pointer; border-radius: 0.5em;  width: 1em }
+			.datepicker .day.active { background-color: lightgreen }
+			.datepicker .day:hover { background-color: lightgray }
+			.datepicker .today { font-weight: bold }
+			.datepicker .days-in-month { font-weight: bold; text-transform: capitalize }
+			.prev:hover, .next:hover { background-color: lightgray; cursor: pointer }
+			.ng-invalid { border: 2px solid red }
+		</style>
+		<script type='text/javascript' src='moment-with-langs.min.js'></script>
+	</head>
+	<body ng-app='calendar' ng-controller='testController'>
+		<h1>Angular calendar</h1>
+		<div calendar date='someDate' timepicker='true' ampm='ampm'></div>
+		<div>
+			<h2>Tinkering..</h2>
+			<p>Selected date: {{ someDate.format("dddd, MMMM Do YYYY, HH:mm:ss") }}</p>
+			<p>AM/PM mode: <input type='checkbox' ng-model='ampm' style='vertical-align:top'></p>
+			<p>
+				Language:
+				<select ng-options='lang.toString() for lang in languages' ng-model='selectedLang'></select>
+			</p>
+			<p>
+				Programmatic change:
+				<a href='#' ng-click='setAm()'>am</a>
+				<a href='#' ng-click='setPm()'>pm</a>
+			</p>
+		</div>
+		<script type='text/javascript' src='angular.js'></script>
+		<script type='text/javascript' src='module.js'></script>
+	</body>
+</html>
